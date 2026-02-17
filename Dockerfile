@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # On installe la bibliothèque discord.py
-RUN pip install --no-cache-dir discord.py
+RUN pip install --no-cache-dir -r requirements.txt
 
 # La commande pour lancer le bot
 CMD ["python", "main.py"]
