@@ -4,7 +4,7 @@ from discord.ext import commands
 
 # --- CONFIGURATION ---
 TOKEN = os.getenv('discord_token')
-MOT_CIBLE = [r'\bcape\b', r'\bcapes\b']
+MOT_CIBLE = ['cape', 'capes']
 ID_ROLE_A_PING = 1473425852284010739  # Remplace par l'ID du rôle
 ID_CHANNEL_SPECIFIQUE = 1473425628219834593  # Remplace par l'ID du salon textuel
 
@@ -27,9 +27,11 @@ async def on_message(message):
 
     # 2. ON VÉRIFIE LE SALON : Le bot n'exécute la suite que si l'ID du salon est le bon
     if message.channel.id == ID_CHANNEL_SPECIFIQUE:
+
+        words = message.content.lower().replace('.', ' ').replace('!', ' ').split()
         
         # 3. Analyse du mot (en minuscules pour être flexible)
-        if any(mot in message.content.lower() for mot in MOT_CIBLE):
+        if any(mot in words for mot in MOT_CIBLE):
             role = message.guild.get_role(ID_ROLE_A_PING)
             
             if role:
