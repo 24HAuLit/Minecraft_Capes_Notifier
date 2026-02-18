@@ -4,7 +4,7 @@ from discord.ext import commands
 
 # --- CONFIGURATION ---
 TOKEN = os.getenv('discord_token')
-MOT_CIBLE = ['cape', 'capes']
+MOT_CIBLE = [r'\bcape\b', r'\bcapes\b']
 ID_ROLE_A_PING = 1473425852284010739  # Remplace par l'ID du rôle
 ID_CHANNEL_SPECIFIQUE = 1473425628219834593  # Remplace par l'ID du salon textuel
 
